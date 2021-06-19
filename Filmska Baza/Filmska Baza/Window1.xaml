@@ -1,0 +1,71 @@
+﻿<Window x:Class="Filmska_Baza.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Filmska_Baza"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/UI_Dictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.Background>
+        <SolidColorBrush x:Name="background" Color="White"/>
+    </Window.Background>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimation To="Yellow" Duration="0:0:10" AutoReverse="True" RepeatBehavior="Forever" Storyboard.TargetName="background" Storyboard.TargetProperty="Color"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <TabControl>
+            <TabItem Width="300px" Height="40px" Header="Nastavljanje filmskih žanrov">
+                <StackPanel Style="{StaticResource Main_Stuff_Style}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Height="30px" Width="400px" Name="Add_Genre_Textbox"></TextBox>
+                        <Button Height="30px" Width="60px" Click="Add_Genre" Style="{StaticResource Button_Style2}">Dodaj</Button>
+                        <Button Height="30px" Width="60px" Click="Delete_Genre" Style="{StaticResource Button_Style2}">Odstrani</Button>
+                        <Button Height="30px" Width="60px" Click="Edit_Genre" Style="{StaticResource Button_Style2}">Uredi</Button>
+                    </StackPanel>
+                    <ListView Name="Genres_List"></ListView>
+                </StackPanel>
+            </TabItem>
+            <TabItem Width="300px" Height="40px" Header="Nastavljanje avtomatskega shranjevanja">
+                <StackPanel Style="{StaticResource Main_Stuff_Style}">
+                    <Label FontWeight="Bold" Height="30px">Čas avtomatskega shranjevanja</Label>
+                    <TextBox Name="AS_time"  Height="30px">0</TextBox>
+                    <StackPanel Margin="10">
+                        <Label Height="30px" FontWeight="Bold">Vklopi avtomatskego shranjevanje</Label>
+                        <CheckBox Name="AS_bool" >Da</CheckBox>
+                    </StackPanel>
+                    <Button IsDefault="True" Click="Accept_Button" Style="{StaticResource Button_Style2}">Accept</Button>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <Canvas>
+            <Ellipse Name = "dot" Width="10" Height="10" Fill="Red" Canvas.Top="270" Canvas.Left="150">
+                <Ellipse.Triggers>
+                    <EventTrigger RoutedEvent="Ellipse.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever">
+                                <DoubleAnimationUsingPath Duration="0:00:05" Source="X" Storyboard.TargetProperty="(Canvas.Left)" PathGeometry="{StaticResource pot}"/>
+                                <DoubleAnimationUsingPath Duration="0:00:05" Source="Y" Storyboard.TargetProperty="(Canvas.Top)" PathGeometry="{StaticResource pot}"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Ellipse.Triggers>
+            </Ellipse>
+        </Canvas>
+    </Grid>
+</Window>

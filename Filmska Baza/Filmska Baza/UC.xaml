@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Filmska_Baza.UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Filmska_Baza"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="Resources/UB_Dictionary.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20px"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Name="UCTitle" FontSize="10" FontWeight="Bold" Background="Beige" TextAlignment="Center" Text="Ocena"></TextBlock>
+        <ComboBox Name="UCSelect" Grid.Row="1" Style="{StaticResource ComboBox_Style}">
+            <ComboBoxItem Style="{StaticResource ComboBoxItem_Style}">N/A</ComboBoxItem>
+            <ComboBoxItem Style="{StaticResource ComboBoxItem_Style}">1/5</ComboBoxItem>
+            <ComboBoxItem Style="{StaticResource ComboBoxItem_Style}">2/5</ComboBoxItem>
+            <ComboBoxItem Style="{StaticResource ComboBoxItem_Style}">3/5</ComboBoxItem>
+            <ComboBoxItem Style="{StaticResource ComboBoxItem_Style}">4/5</ComboBoxItem>
+            <ComboBoxItem Style="{StaticResource ComboBoxItem_Style}">5/5</ComboBoxItem>
+        </ComboBox>
+        <TextBox Name="UCText" Grid.Row="2"></TextBox>
+        <Button Content="Pošlji" Grid.Row="3" Click="Send_Data" Style="{StaticResource Button_Style}"></Button>
+    </Grid>
+</UserControl>
